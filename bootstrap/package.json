@@ -1,0 +1,12 @@
+{
+  "name": "clase-4-bootstrap",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass:build": "sass src/scss/main.scss assets/css/main.css",
+    "sass:watch": "sass --watch src/scss/main.scss assets/css/main.css"
+  },
+  "devDependencies": {
+    "sass": "^1.89.0"
+  }
+}

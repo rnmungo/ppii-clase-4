@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clase 4 - Tailwind CSS</title>
+
+    <!-- Tailwind por CDN: ideal para una clase introductoria sin instalar dependencias. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuracion rapida de Tailwind: colores, fuente, sombras y radios propios. -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                primary: "#2952e3",
+                secondary: "#f97316",
+                soft: "#e9eefc",
+                background: "#f7f8fb",
+                text: "#172033",
+                muted: "#64748b"
+              }
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+              mono: ["JetBrains Mono", "Consolas", "monospace"]
+            },
+            borderRadius: {
+              DEFAULT: "8px"
+            },
+            boxShadow: {
+              soft: "0 12px 30px rgba(15, 23, 42, .06)"
+            }
+          }
+        }
+      };
+    </script>
+
+    <!-- Google Fonts opcional: se puede cambiar por cualquier fuente. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-brand-background font-sans text-brand-text">
+    <nav class="sticky top-0 z-10 bg-brand-primary text-white">
+      <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between">
+        <a class="text-xl font-bold" href="#">Tailwind desde cero</a>
+        <div class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-white/80">
+          <a class="hover:text-white" href="#componentes">Componentes</a>
+          <a class="hover:text-white" href="#layout">Layout</a>
+          <a class="hover:text-white" href="#utilities">Utilities</a>
+          <a class="hover:text-white" href="#personalizacion">Personalizacion</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-brand-primary py-16 text-white">
+      <div class="mx-auto max-w-6xl px-4">
+        <div class="grid gap-8 lg:grid-cols-[2fr_1fr] lg:items-center">
+          <div>
+            <h1 class="mb-4 max-w-4xl text-4xl font-extrabold leading-tight md:text-5xl">Una guia practica para explicar Tailwind CSS</h1>
+            <p class="mb-6 max-w-3xl text-lg leading-8 text-white/80">
+              Esta pagina muestra componentes basicos, grillas, margenes, paddings, clases utilitarias y una forma sencilla de cambiar colores y fuentes.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <a class="rounded bg-white px-5 py-3 text-lg font-semibold text-brand-primary transition hover:bg-slate-100" href="#componentes">Ver ejemplos</a>
+              <a class="rounded border border-white px-5 py-3 text-lg font-semibold text-white transition hover:bg-white hover:text-brand-primary" href="#personalizacion">Personalizar</a>
+            </div>
+          </div>
+
+          <div class="rounded border border-slate-200 bg-white p-6 text-brand-text shadow-soft">
+            <p class="mb-2 text-xs font-bold uppercase tracking-wide text-brand-primary">Idea principal</p>
+            <h2 class="mb-2 text-2xl font-bold">Tailwind propone construir componentes usando clases utilitarias.</h2>
+            <p class="text-brand-muted">
+              Primero armamos el HTML semantico, despues aplicamos clases como <code class="font-mono">max-w-6xl</code>, <code class="font-mono">grid</code>, <code class="font-mono">p-4</code>, <code class="font-mono">text-center</code> o <code class="font-mono">lg:grid-cols-3</code>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="componentes" class="py-12">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="mb-6 max-w-3xl">
+            <span class="inline-block rounded-md bg-brand-soft px-2 py-1 text-sm font-semibold text-brand-primary">Componentes basicos</span>
+            <h2 class="mt-3 text-3xl font-bold">Elementos construidos con utilities</h2>
+            <p class="mt-2 text-brand-muted">Tailwind no trae componentes cerrados por defecto. En su lugar, se combinan clases para crear botones, alertas, tarjetas, navbars, formularios y mas.</p>
+          </div>
+
+          <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 class="mb-2 text-xl font-bold">Botones</h3>
+              <p class="mb-4 text-brand-muted">Cambian segun las utilities de color, borde, padding, radio y hover.</p>
+              <div class="flex flex-wrap gap-2">
+                <button class="rounded bg-brand-primary px-4 py-2 font-semibold text-white hover:bg-blue-700">Primario</button>
+                <button class="rounded border border-slate-900 px-4 py-2 font-semibold text-slate-900 hover:bg-slate-900 hover:text-white">Secundario</button>
+                <button class="rounded bg-brand-secondary px-4 py-2 font-semibold text-white hover:bg-orange-600">Personalizado</button>
+              </div>
+            </div>
+
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 class="mb-2 text-xl font-bold">Alertas</h3>
+              <p class="mb-4 text-brand-muted">Sirven para mensajes de estado o avisos importantes.</p>
+              <div class="mb-2 rounded border border-emerald-200 bg-emerald-50 p-4 text-emerald-800" role="alert">Operacion realizada con exito.</div>
+              <div class="rounded border border-amber-200 bg-amber-50 p-4 text-amber-800" role="alert">Revisar campos obligatorios.</div>
+            </div>
+
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-sm md:col-span-2 xl:col-span-1">
+              <h3 class="mb-2 text-xl font-bold">Formulario</h3>
+              <p class="mb-4 text-brand-muted">Tailwind permite definir el estilo del input con utilities.</p>
+              <label for="emailDemo" class="mb-2 block font-semibold">Email</label>
+              <input id="emailDemo" class="mb-4 w-full rounded border border-slate-300 px-3 py-2 outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20" type="email" placeholder="nombre@email.com">
+              <select class="w-full rounded border border-slate-300 px-3 py-2 outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20" aria-label="Elegir comision">
+                <option selected>Elegir comision</option>
+                <option>Manana</option>
+                <option>Tarde</option>
+                <option>Noche</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="layout" class="bg-white py-12">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="mb-6 max-w-3xl">
+            <span class="inline-block rounded-md bg-brand-soft px-2 py-1 text-sm font-semibold text-brand-primary">Layout y grilla</span>
+            <h2 class="mt-3 text-3xl font-bold">Containers, grid y breakpoints</h2>
+            <p class="mt-2 text-brand-muted">Tailwind usa CSS Grid y Flexbox mediante clases. Los prefijos responsivos indican desde que ancho se aplica una utility.</p>
+          </div>
+
+          <div class="mb-6 rounded border border-slate-200 bg-white p-6 shadow-soft">
+            <div class="grid gap-4 text-center md:grid-cols-2 lg:grid-cols-4">
+              <div class="flex min-h-24 items-center justify-center rounded border border-slate-200 bg-brand-soft p-4"><code class="font-mono text-sm">md:grid-cols-2 lg:grid-cols-4</code></div>
+              <div class="flex min-h-24 items-center justify-center rounded border border-slate-200 bg-brand-soft p-4"><code class="font-mono text-sm">md:grid-cols-2 lg:grid-cols-4</code></div>
+              <div class="flex min-h-24 items-center justify-center rounded border border-slate-200 bg-brand-soft p-4"><code class="font-mono text-sm">md:grid-cols-2 lg:grid-cols-4</code></div>
+              <div class="flex min-h-24 items-center justify-center rounded border border-slate-200 bg-brand-soft p-4"><code class="font-mono text-sm">md:grid-cols-2 lg:grid-cols-4</code></div>
+            </div>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-2">
+            <div>
+              <h3 class="mb-3 text-xl font-bold">Clases importantes</h3>
+              <ul class="overflow-hidden rounded border border-slate-200 bg-white">
+                <li class="border-b border-slate-200 p-3"><code class="font-mono">max-w-6xl mx-auto</code>: centra y limita el ancho del contenido.</li>
+                <li class="border-b border-slate-200 p-3"><code class="font-mono">grid</code>: activa CSS Grid.</li>
+                <li class="border-b border-slate-200 p-3"><code class="font-mono">grid-cols-*</code>: define cantidad de columnas.</li>
+                <li class="p-3"><code class="font-mono">gap-4</code>, <code class="font-mono">gap-6</code>: agregan separacion entre elementos.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="mb-2 text-xl font-bold">Breakpoints</h3>
+              <p class="mb-3 text-brand-muted">Los prefijos indican desde que ancho se aplica una clase.</p>
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse rounded border border-slate-200 bg-white text-left">
+                  <thead>
+                    <tr class="bg-slate-50">
+                      <th class="border border-slate-200 p-3">Prefijo</th>
+                      <th class="border border-slate-200 p-3">Ejemplo</th>
+                      <th class="border border-slate-200 p-3">Uso</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="border border-slate-200 p-3"><code class="font-mono">sin prefijo</code></td><td class="border border-slate-200 p-3"><code class="font-mono">grid-cols-1</code></td><td class="border border-slate-200 p-3">Celulares</td></tr>
+                    <tr><td class="border border-slate-200 p-3"><code class="font-mono">md:</code></td><td class="border border-slate-200 p-3"><code class="font-mono">md:grid-cols-2</code></td><td class="border border-slate-200 p-3">Tablets</td></tr>
+                    <tr><td class="border border-slate-200 p-3"><code class="font-mono">lg:</code></td><td class="border border-slate-200 p-3"><code class="font-mono">lg:grid-cols-4</code></td><td class="border border-slate-200 p-3">Escritorio</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="utilities" class="py-12">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="mb-6 max-w-3xl">
+            <span class="inline-block rounded-md bg-brand-soft px-2 py-1 text-sm font-semibold text-brand-primary">Utility classes</span>
+            <h2 class="mt-3 text-3xl font-bold">Margenes, paddings, colores, flex y texto</h2>
+            <p class="mt-2 text-brand-muted">Tailwind lleva la idea de utilities al centro del framework: la mayor parte del diseno se escribe directamente con clases.</p>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-3">
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-soft">
+              <h3 class="mb-2 text-xl font-bold">Spacing</h3>
+              <p class="mb-4 text-brand-muted">Formato: utilities como <code class="font-mono">p-4</code>, <code class="font-mono">m-2</code>, <code class="font-mono">px-6</code>.</p>
+              <div class="mb-4 bg-brand-soft p-4">
+                <div class="m-2 rounded bg-brand-primary p-4 text-white">Tengo <code class="font-mono text-white">p-4 m-2</code></div>
+              </div>
+              <ul class="mb-0 list-inside list-disc">
+                <li><code class="font-mono">m-4</code>: margen en todos los lados.</li>
+                <li><code class="font-mono">mt-6</code>: margen superior.</li>
+                <li><code class="font-mono">px-8</code>: padding horizontal.</li>
+                <li><code class="font-mono">py-2</code>: padding vertical.</li>
+              </ul>
+            </div>
+
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-soft">
+              <h3 class="mb-2 text-xl font-bold">Flexbox</h3>
+              <p class="mb-4 text-brand-muted">Clases para alinear y distribuir elementos.</p>
+              <div class="mb-4 flex items-center justify-between rounded border border-slate-200 bg-slate-50 p-4">
+                <span class="rounded bg-brand-primary px-2 py-1 text-sm font-semibold text-white">Inicio</span>
+                <span class="rounded bg-amber-500 px-2 py-1 text-sm font-semibold text-white">Centro</span>
+                <span class="rounded bg-emerald-600 px-2 py-1 text-sm font-semibold text-white">Fin</span>
+              </div>
+              <p class="mb-0"><code class="font-mono">flex justify-between items-center</code></p>
+            </div>
+
+            <div class="h-full rounded border border-slate-200 bg-white p-6 shadow-soft">
+              <h3 class="mb-2 text-xl font-bold">Texto y color</h3>
+              <p class="mb-4 text-brand-muted">Sirven para modificar alineacion, peso, color y fondo.</p>
+              <p class="rounded bg-brand-soft p-4 text-center font-bold text-brand-primary">Texto centrado, bold y con color de marca.</p>
+              <p class="mb-0"><code class="font-mono">text-center font-bold text-brand-primary bg-brand-soft p-4</code></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="personalizacion" class="bg-white py-12">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="mb-6 max-w-3xl">
+            <span class="inline-block rounded-md bg-brand-soft px-2 py-1 text-sm font-semibold text-brand-primary">Personalizacion</span>
+            <h2 class="mt-3 text-3xl font-bold">Modificar colores y fuentes</h2>
+            <p class="mt-2 text-brand-muted">Tailwind se personaliza desde su configuracion. En esta pagina, los colores y fuentes salen de <code class="font-mono">tailwind.config</code>.</p>
+          </div>
+
+          <div class="grid gap-6 lg:grid-cols-[5fr_7fr] lg:items-start">
+            <div class="rounded border border-slate-200 bg-white p-6 shadow-soft">
+              <h3 class="mb-4 text-xl font-bold">Paleta actual</h3>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <div class="min-h-20 rounded border border-slate-200 bg-brand-primary"></div>
+                  <p class="mt-2 text-sm"><code class="font-mono">brand.primary</code></p>
+                </div>
+                <div>
+                  <div class="min-h-20 rounded border border-slate-200 bg-brand-secondary"></div>
+                  <p class="mt-2 text-sm"><code class="font-mono">brand.secondary</code></p>
+                </div>
+                <div>
+                  <div class="min-h-20 rounded border border-slate-200 bg-brand-soft"></div>
+                  <p class="mt-2 text-sm"><code class="font-mono">brand.soft</code></p>
+                </div>
+                <div>
+                  <div class="min-h-20 rounded border border-slate-200 bg-brand-text"></div>
+                  <p class="mt-2 text-sm"><code class="font-mono">brand.text</code></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded border border-slate-200 bg-white p-6 shadow-soft">
+              <h3 class="mb-4 text-xl font-bold">Codigo para mostrar en clase</h3>
+              <pre class="mb-4 overflow-auto rounded bg-slate-950 p-4 text-sm text-white"><code>tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: "#2952e3",
+          secondary: "#f97316",
+          background: "#f7f8fb",
+          text: "#172033"
+        }
+      },
+      fontFamily: {
+        sans: ["Inter", "system-ui", "sans-serif"]
+      }
+    }
+  }
+}</code></pre>
+              <p class="mb-3 text-brand-muted">La diferencia principal es que Bootstrap ofrece componentes prearmados, mientras que Tailwind ofrece utilities para construir esos componentes con mas control visual.</p>
+              <pre class="mb-0 overflow-auto rounded bg-slate-100 p-4 text-sm"><code>&lt;button class="rounded bg-brand-secondary px-4 py-2 font-semibold text-white hover:bg-orange-600"&gt;
+  Personalizado
+&lt;/button&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-200 py-6">
+      <div class="mx-auto flex max-w-6xl flex-col gap-2 px-4 md:flex-row md:justify-between">
+        <p class="mb-0 font-semibold">Clase 4 - Tailwind CSS</p>
+        <p class="mb-0 text-brand-muted">HTML, componentes, grilla, spacing, utilities y personalizacion.</p>
+      </div>
+    </footer>
+  </body>
+</html>

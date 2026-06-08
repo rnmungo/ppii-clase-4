@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clase 4 - Responsive Design</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Responsive Design con CSS Grid</h1>
+    <p>Ejemplo simple para ver como cambia una web en distintos tamanos de pantalla.</p>
+  </header>
+
+  <main class="page">
+    <section class="breakpoint-info">
+      <h2>Breakpoint activo</h2>
+      <p class="breakpoint-label">
+        <span class="label-xs">XS: menos de 480px</span>
+        <span class="label-s">S: desde 480px</span>
+        <span class="label-m">M: desde 768px</span>
+        <span class="label-l">L: desde 1024px</span>
+        <span class="label-lg">LG: desde 1280px</span>
+      </p>
+    </section>
+
+    <section class="layout-demo" aria-label="Ejemplo de layout responsive">
+      <article class="card featured">
+        <h2>Principal</h2>
+        <p>En pantallas chicas ocupa una columna. En pantallas medianas y grandes puede ocupar mas espacio.</p>
+      </article>
+
+      <article class="card">
+        <h2>Tarjeta 1</h2>
+        <p>La grilla empieza con una sola columna.</p>
+      </article>
+
+      <article class="card">
+        <h2>Tarjeta 2</h2>
+        <p>Luego pasa a dos, tres y cuatro columnas segun el ancho disponible.</p>
+      </article>
+
+      <article class="card">
+        <h2>Tarjeta 3</h2>
+        <p>CSS Grid permite reorganizar el contenido sin cambiar el HTML.</p>
+      </article>
+
+      <article class="card">
+        <h2>Tarjeta 4</h2>
+        <p>Las media queries definen reglas especiales para cada breakpoint.</p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

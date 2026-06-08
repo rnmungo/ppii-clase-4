@@ -1,0 +1,105 @@
+/*
+  Personalizacion rapida:
+  - Estas son variables CSS de Bootstrap.
+  - Sass genera estos valores a partir de variables propias como $brand-primary.
+  - Con Bootstrap por CDN, algunas clases utilitarias usan estas variables directamente.
+  - Algunos componentes, como .btn-primary, tambien definen variables propias y pueden requerir ajustes puntuales.
+*/
+:root {
+  --bs-primary: #2952e3;
+  --bs-primary-rgb: 41, 82, 227;
+  --bs-secondary: #f97316;
+  --bs-secondary-rgb: 249, 115, 22;
+  --bs-body-bg: #f7f8fb;
+  --bs-body-color: #172033;
+  --bs-body-color-rgb: 23, 32, 51;
+  --bs-secondary-color: #64748b;
+  --bs-secondary-color-rgb: 100, 116, 139;
+  --bs-body-font-family:
+      "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      sans-serif;
+  --bs-font-monospace: "JetBrains Mono", Consolas, monospace;
+  --bs-border-radius: 8px;
+  --bs-border-radius-lg: 8px;
+  --bs-link-color: var(--bs-primary);
+  --bs-link-color-rgb: var(--bs-primary-rgb);
+}
+
+body {
+  background: var(--bs-body-bg);
+}
+
+.navbar,
+.hero {
+  background: var(--bs-primary);
+}
+
+.hero {
+  color: #fff;
+  padding: 4rem 0;
+}
+.hero p {
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 720px;
+}
+
+.section-title {
+  max-width: 780px;
+}
+
+.example-box {
+  min-height: 96px;
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.12);
+  border-radius: var(--bs-border-radius);
+  background: var(--bs-white);
+}
+
+.demo-surface {
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.1);
+  border-radius: var(--bs-border-radius);
+  background: var(--bs-white);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.code-pill {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.08);
+  font-size: 0.875rem;
+}
+
+.custom-button {
+  --bs-btn-bg: var(--bs-secondary);
+  --bs-btn-border-color: var(--bs-secondary);
+  --bs-btn-hover-bg: #ea580c;
+  --bs-btn-hover-border-color: #ea580c;
+  --bs-btn-color: #fff;
+}
+
+.palette-chip {
+  width: 100%;
+  min-height: 84px;
+  border-radius: var(--bs-border-radius);
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.12);
+}
+
+.bg-brand-primary {
+  background: var(--bs-primary);
+}
+
+.bg-brand-secondary {
+  background: var(--bs-secondary);
+}
+
+.bg-brand-soft {
+  background: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.text-brand {
+  color: var(--bs-primary);
+  font-style: italic;
+}
+
+/*# sourceMappingURL=main.css.map */

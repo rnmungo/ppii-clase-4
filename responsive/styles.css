@@ -1,0 +1,197 @@
+/* Estilos base: se aplican primero a celulares pequenos (XS). */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172033;
+    background: #f4f7fb;
+}
+
+.site-header {
+    padding: 32px 20px;
+    color: white;
+    background: #1d4ed8;
+}
+
+.site-header h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    line-height: 1.1;
+}
+
+.site-header p {
+    max-width: 680px;
+    margin: 0;
+    color: #dbeafe;
+}
+
+.page {
+    width: min(100% - 32px, 1200px);
+    margin: 24px auto;
+}
+
+.breakpoint-info,
+.card {
+    border: 1px solid #d7deea;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 8px 20px rgba(23, 32, 51, 0.08);
+}
+
+.breakpoint-info {
+    margin-bottom: 20px;
+    padding: 16px;
+}
+
+.breakpoint-info h2,
+.card h2 {
+    margin: 0 0 8px;
+}
+
+.breakpoint-label span {
+    display: none;
+    font-weight: 700;
+}
+
+.breakpoint-label .label-xs {
+    color: #dc2626;
+}
+
+.layout-demo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.card {
+    min-height: 150px;
+    padding: 20px;
+}
+
+.card p {
+    margin: 0;
+    color: #566174;
+}
+
+.featured {
+    color: white;
+    background: #0f172a;
+}
+
+.featured p {
+    color: #cbd5e1;
+}
+
+/* XS: menos de 480px. Una columna. */
+.breakpoint-label .label-xs {
+    display: inline;
+}
+
+/* S: celulares grandes. Desde 480px. */
+@media (min-width: 480px) {
+    .site-header {
+        background: #047857;
+    }
+
+    .breakpoint-label .label-xs {
+        display: none;
+    }
+
+    .breakpoint-label .label-s {
+        display: inline;
+        color: #047857;
+    }
+
+    .layout-demo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .featured {
+        grid-column: span 2;
+    }
+}
+
+/* M: tablets. Desde 768px. */
+@media (min-width: 768px) {
+    .site-header {
+        padding: 44px 32px;
+        background: #7c3aed;
+    }
+
+    .site-header h1 {
+        font-size: 42px;
+    }
+
+    .breakpoint-label .label-s {
+        display: none;
+    }
+
+    .breakpoint-label .label-m {
+        display: inline;
+        color: #7c3aed;
+    }
+
+    .layout-demo {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .featured {
+        grid-column: span 3;
+    }
+}
+
+/* L: notebooks y escritorios chicos. Desde 1024px. */
+@media (min-width: 1024px) {
+    .site-header {
+        background: #b45309;
+    }
+
+    .breakpoint-label .label-m {
+        display: none;
+    }
+
+    .breakpoint-label .label-l {
+        display: inline;
+        color: #b45309;
+    }
+
+    .layout-demo {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .featured {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
+/* LG: escritorios grandes. Desde 1280px. */
+@media (min-width: 1280px) {
+    .site-header {
+        background: #be123c;
+    }
+
+    .page {
+        margin-top: 32px;
+    }
+
+    .breakpoint-label .label-l {
+        display: none;
+    }
+
+    .breakpoint-label .label-lg {
+        display: inline;
+        color: #be123c;
+    }
+
+    .layout-demo {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .featured {
+        grid-column: span 2;
+    }
+}
