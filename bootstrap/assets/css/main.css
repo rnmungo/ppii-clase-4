@@ -102,4 +102,147 @@ body {
   font-style: italic;
 }
 
+.responsive-demo, .sass-feature {
+  border: 1px solid rgba(var(--bs-body-color-rgb), 0.1);
+  border-radius: var(--bs-border-radius);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+.sass-feature {
+  height: 100%;
+  padding: 1.5rem;
+}
+.sass-feature__icon {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  place-items: center;
+  font-weight: 800;
+}
+
+.sass-feature--variables {
+  border-top: 4px solid #2952e3;
+  background: rgb(229.32, 234.24, 251.64);
+}
+.sass-feature--variables .sass-feature__icon {
+  color: #2952e3;
+  background: rgb(207.92, 216.94, 248.84);
+}
+
+.sass-badge--variables {
+  color: #2952e3;
+  background: rgb(220.76, 227.32, 250.52);
+  border: 1px solid rgb(180.1, 194.45, 245.2);
+}
+
+.sass-feature--mixins {
+  border-top: 4px solid #f97316;
+  background: rgb(254.28, 238.2, 227.04);
+}
+.sass-feature--mixins .sass-feature__icon {
+  color: #f97316;
+  background: rgb(253.68, 224.2, 203.74);
+}
+
+.sass-badge--mixins {
+  color: #f97316;
+  background: rgb(254.04, 232.6, 217.72);
+  border: 1px solid rgb(252.9, 206, 173.45);
+}
+
+.sass-feature--loops {
+  border-top: 4px solid #16a34a;
+  background: rgb(227.04, 243.96, 233.28);
+}
+.sass-feature--loops .sass-feature__icon {
+  color: #16a34a;
+  background: rgb(203.74, 234.76, 215.18);
+}
+
+.sass-badge--loops {
+  color: #16a34a;
+  background: rgb(217.72, 240.28, 226.04);
+  border: 1px solid rgb(173.45, 222.8, 191.65);
+}
+
+.sass-feature--responsive {
+  border-top: 4px solid #9333ea;
+  background: rgb(242.04, 230.52, 252.48);
+}
+.sass-feature--responsive .sass-feature__icon {
+  color: #9333ea;
+  background: rgb(231.24, 210.12, 250.38);
+}
+
+.sass-badge--responsive {
+  color: #9333ea;
+  background: rgb(237.72, 222.36, 251.64);
+  border: 1px solid rgb(217.2, 183.6, 247.65);
+}
+
+.sass-badge {
+  display: inline-block;
+  border-radius: 999px;
+  font-family: var(--bs-font-monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.sass-space-1 {
+  padding: 0.35rem 0.6rem;
+}
+
+.sass-space-2 {
+  padding: 0.7rem 1.2rem;
+}
+
+.sass-space-3 {
+  padding: 1.05rem 1.8rem;
+}
+
+.sass-space-4 {
+  padding: 1.4rem 2.4rem;
+}
+
+.responsive-demo {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff;
+}
+.responsive-demo::before {
+  content: "Vista movil: una columna";
+  grid-column: 1/-1;
+  color: var(--bs-secondary-color);
+  font-family: var(--bs-font-monospace);
+  font-size: 0.85rem;
+}
+.responsive-demo__item {
+  padding: 1rem;
+  border-radius: var(--bs-border-radius);
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.1);
+  text-align: center;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .responsive-demo {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
+  }
+  .responsive-demo::before {
+    content: "Desde 768px: dos columnas";
+  }
+}
+@media (min-width: 992px) {
+  .responsive-demo {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .responsive-demo::before {
+    content: "Desde 992px: cuatro columnas";
+  }
+}
+
 /*# sourceMappingURL=main.css.map */

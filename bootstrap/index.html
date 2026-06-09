@@ -28,6 +28,7 @@
             <li class="nav-item"><a class="nav-link" href="#componentes">Componentes</a></li>
             <li class="nav-item"><a class="nav-link" href="#layout">Layout</a></li>
             <li class="nav-item"><a class="nav-link" href="#utilities">Utilities</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sass">Sass</a></li>
             <li class="nav-item"><a class="nav-link" href="#personalizacion">Personalizacion</a></li>
           </ul>
         </div>
@@ -222,6 +223,108 @@
         </div>
       </section>
 
+      <section id="sass" class="py-5 bg-white">
+        <div class="container">
+          <div class="section-title mb-4">
+            <span class="code-pill">Sass en accion</span>
+            <h2 class="fw-bold mt-3">Escribir menos codigo y generar estilos consistentes</h2>
+            <p class="text-secondary">Estos ejemplos se generan desde <code>main.scss</code> usando mapas, funciones, mixins, bucles, anidamiento, <code>@extend</code> y media queries.</p>
+          </div>
+
+          <div class="row g-4 mb-5">
+            <div class="col-md-6 col-xl-3">
+              <article class="sass-feature sass-feature--variables">
+                <span class="sass-feature__icon">$</span>
+                <h3 class="h5 fw-bold">Variables y mapas</h3>
+                <p class="text-secondary mb-0">Centralizan colores y breakpoints para evitar valores repetidos.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <article class="sass-feature sass-feature--mixins">
+                <span class="sass-feature__icon">M</span>
+                <h3 class="h5 fw-bold">Mixins</h3>
+                <p class="text-secondary mb-0">Reutilizan bloques de estilos y aceptan parametros.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <article class="sass-feature sass-feature--loops">
+                <span class="sass-feature__icon">L</span>
+                <h3 class="h5 fw-bold">Bucles</h3>
+                <p class="text-secondary mb-0">Generan variantes y utilities sin copiar cada selector manualmente.</p>
+              </article>
+            </div>
+            <div class="col-md-6 col-xl-3">
+              <article class="sass-feature sass-feature--responsive">
+                <span class="sass-feature__icon">@</span>
+                <h3 class="h5 fw-bold">Media queries</h3>
+                <p class="text-secondary mb-0">Los breakpoints se reutilizan mediante un mixin con <code>@content</code>.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="row g-4 align-items-start">
+            <div class="col-lg-6">
+              <div class="demo-surface p-4 h-100">
+                <h3 class="h5 fw-bold">Clases generadas con bucles</h3>
+                <p class="text-secondary">Un <code>@each</code> crea los colores y un <code>@for</code> crea cuatro escalas de padding.</p>
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                  <span class="sass-badge sass-badge--variables sass-space-1">variables</span>
+                  <span class="sass-badge sass-badge--mixins sass-space-2">mixins</span>
+                  <span class="sass-badge sass-badge--loops sass-space-3">loops</span>
+                  <span class="sass-badge sass-badge--responsive sass-space-4">responsive</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <h3 class="h5 fw-bold">Media query aplicada con Sass</h3>
+              <p class="text-secondary">Cambia el ancho del navegador: la grilla pasa de una a dos y luego a cuatro columnas.</p>
+              <div class="responsive-demo">
+                <div class="responsive-demo__item">1</div>
+                <div class="responsive-demo__item">2</div>
+                <div class="responsive-demo__item">3</div>
+                <div class="responsive-demo__item">4</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-surface p-4 mt-4">
+            <h3 class="h5 fw-bold">Fragmentos para explicar en clase</h3>
+            <div class="row g-4">
+              <div class="col-lg-6">
+                <p class="fw-semibold mb-2">Mixin y bucle</p>
+                <pre class="bg-dark text-white p-3 rounded overflow-auto mb-0"><code>@mixin feature-card($color) {
+  border-top: 4px solid $color;
+  background: soft-color($color);
+}
+
+@each $name, $color in $sass-features {
+  .sass-feature--#{$name} {
+    @include feature-card($color);
+  }
+}</code></pre>
+              </div>
+              <div class="col-lg-6">
+                <p class="fw-semibold mb-2">Media query reutilizable</p>
+                <pre class="bg-dark text-white p-3 rounded overflow-auto mb-0"><code>@mixin respond-to($breakpoint) {
+  $width: map.get($breakpoints, $breakpoint);
+
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+.responsive-demo {
+  @include respond-to("tablet") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="personalizacion" class="py-5 bg-white">
         <div class="container">
           <div class="section-title mb-4">
@@ -292,7 +395,7 @@ body {
     <footer class="py-4 border-top">
       <div class="container d-flex flex-column flex-md-row justify-content-between gap-2">
         <p class="mb-0 fw-semibold">Clase 4 - Bootstrap</p>
-        <p class="mb-0 text-secondary">HTML, componentes, grilla, spacing, utilities y personalizacion.</p>
+        <p class="mb-0 text-secondary">HTML, Bootstrap, Sass, responsive design y personalizacion.</p>
       </div>
     </footer>
 

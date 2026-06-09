@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "sass:map";
+
 // Variables propias del proyecto.
 // Sass permite centralizar valores y reutilizarlos antes de generar CSS.
 $brand-primary: #2952e3;
@@ -8,6 +11,48 @@ $body-color: #172033;
 $body-muted: #64748b;
 $radius: 8px;
 $shadow-soft: 0 12px 30px rgba(15, 23, 42, 0.06);
+
+// Los mapas agrupan valores relacionados y permiten recorrerlos con bucles.
+$sass-features: (
+    "variables": #2952e3,
+    "mixins": #f97316,
+    "loops": #16a34a,
+    "responsive": #9333ea
+);
+
+$breakpoints: (
+    "tablet": 768px,
+    "desktop": 992px
+);
+
+// Una funcion recibe valores, realiza una operacion y devuelve un resultado.
+@function soft-color($base-color, $amount: 88%) {
+    @return color.mix(white, $base-color, $amount);
+}
+
+// Un mixin evita repetir bloques de propiedades y puede recibir parametros.
+@mixin feature-card($accent-color) {
+    border-top: 4px solid $accent-color;
+    background: soft-color($accent-color);
+
+    .sass-feature__icon {
+        color: $accent-color;
+        background: color.mix(white, $accent-color, 78%);
+    }
+}
+
+// Este mixin centraliza los breakpoints utilizados por las media queries.
+@mixin respond-to($breakpoint) {
+    $width: map.get($breakpoints, $breakpoint);
+
+    @if $width {
+        @media (min-width: $width) {
+            @content;
+        }
+    } @else {
+        @error "El breakpoint #{$breakpoint} no existe.";
+    }
+}
 
 /*
   Personalizacion rapida:
@@ -112,4 +157,98 @@ body {
 .text-brand {
     color: var(--bs-primary);
     font-style: italic;
+}
+
+// Placeholder: estilos compartidos que solo se imprimen cuando se usan con @extend.
+%sass-surface {
+    border: 1px solid rgba(var(--bs-body-color-rgb), 0.1);
+    border-radius: var(--bs-border-radius);
+    box-shadow: $shadow-soft;
+}
+
+.sass-feature {
+    @extend %sass-surface;
+    height: 100%;
+    padding: 1.5rem;
+
+    &__icon {
+        display: inline-grid;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: 1rem;
+        border-radius: 50%;
+        place-items: center;
+        font-weight: 800;
+    }
+}
+
+// @each recorre el mapa y genera una variante por cada funcionalidad.
+@each $name, $feature-color in $sass-features {
+    .sass-feature--#{$name} {
+        @include feature-card($feature-color);
+    }
+
+    .sass-badge--#{$name} {
+        color: $feature-color;
+        background: soft-color($feature-color, 84%);
+        border: 1px solid color.mix(white, $feature-color, 65%);
+    }
+}
+
+.sass-badge {
+    display: inline-block;
+    border-radius: 999px;
+    font-family: var(--bs-font-monospace);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+// @for crea varias clases siguiendo un patron numerico.
+@for $step from 1 through 4 {
+    .sass-space-#{$step} {
+        padding: $step * 0.35rem $step * 0.6rem;
+    }
+}
+
+.responsive-demo {
+    @extend %sass-surface;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    background: #fff;
+
+    &::before {
+        content: "Vista movil: una columna";
+        grid-column: 1 / -1;
+        color: var(--bs-secondary-color);
+        font-family: var(--bs-font-monospace);
+        font-size: 0.85rem;
+    }
+
+    &__item {
+        padding: 1rem;
+        border-radius: var(--bs-border-radius);
+        color: var(--bs-primary);
+        background: rgba(var(--bs-primary-rgb), 0.1);
+        text-align: center;
+        font-weight: 700;
+    }
+
+    // El contenido del mixin se inserta dentro de @media (min-width: 768px).
+    @include respond-to("tablet") {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1.5rem;
+
+        &::before {
+            content: "Desde 768px: dos columnas";
+        }
+    }
+
+    @include respond-to("desktop") {
+        grid-template-columns: repeat(4, 1fr);
+
+        &::before {
+            content: "Desde 992px: cuatro columnas";
+        }
+    }
 }
